@@ -1,0 +1,200 @@
+﻿
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 40px;
+    background-color: rgb(240, 240, 240) !important;
+}
+
+h5 {
+    color: black;
+}
+
+h1 {
+    color: black;
+    font-size: medium;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+#bbutton {
+    background-color: #3C0134;
+    border-color: black;
+    color: white;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    display: inline-block;
+    margin-top: 15px;
+    font-size: 13px;
+    cursor: pointer;
+    text-transform: uppercase;
+    height: 40px;
+    border: none;
+    outline: 0;
+    border-radius: 33px;
+}
+
+.bbutton:hover {
+    opacity: 0.7;
+}
+
+
+#service-pic {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#portfolio-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 10%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#portfolio_content {
+    text-align: left;
+    height: auto;
+}
+
+.mainSection {
+    text-align: center;
+    vertical-align: middle;
+    align-self: center;
+    height: auto;
+}
+
+#labelStyle {
+    color: black;
+}
+
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 0px;
+    margin-bottom: 12px;
+    resize: vertical;
+}
+
+input[type=message], select, textarea {
+    width: 100%;
+    padding: 8px;
+    height: 50px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 0px;
+    margin-bottom: 12px;
+}
+
+#row-flex {
+    display: flex;
+}
+
+.row {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0 -5px;
+}
+
+.actionTag {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.col_style {
+    text-align: center;
+    align-content: center;
+}
+
+
+table {
+    color: white;
+    padding: 10px;
+    margin: 10px;
+}
+
+td {
+    padding: 10px;
+}
+
+th {
+    padding: 10px
+}
+
+hr {
+    background-color: white;
+}
+
+
+.menu {
+    color: white;
+    font-size: medium;
+    font-weight: bold;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.logo {
+    color: rgb(240, 240, 240);
+    font-size: medium;
+    font-weight: bold;
+}
+
+p {
+    color: black;
+}
+
+col-5 {
+    text-align: center;
+    vertical-align: middle;
+    align-self: center;
+    height: auto;
+    
+}
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+    margin-left:10px;
+    margin-right:10px;
+}
+
+.price {
+    color: grey;
+    font-size: 22px;
+}
+
+.card button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+.card button:hover {
+        opacity: 0.7;
+}
+
+#item-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 10%;
+    margin-left: auto;
+    margin-right: auto;
+}

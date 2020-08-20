@@ -1,0 +1,61 @@
+﻿
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robo World</title>
+    <link rel="stylesheet" href="@Url.Content("~/css/Style.css")" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="col-lg-4; float-left" style="vertical-align: middle; margin-top:100px; margin-right:100px">
+        <h3>Product filters<br /></h3>
+        <p><button id="bbutton" onclick="location.href='@Url.Action("FilterProducts", "Home")?categoryName=' +'Wearables'">Wearables</button></p>
+        <p><button id="bbutton" onclick="location.href='@Url.Action("FilterProducts", "Home")?categoryName=' +'Circuits'">Circuits</button></p>
+        <p><button id="bbutton" onclick="location.href='@Url.Action("FilterProducts", "Home")?categoryName=' +'Educational'">Educational</button></p>
+        <p><button id="bbutton" onclick="location.href='@Url.Action("FilterProducts", "Home")?categoryName=' +'Remote Control'">Remote Control</button></p>
+        @if (this.User.Identity.IsAuthenticated)
+        {
+            <button id="bbutton" onclick="location.href='@Url.Action("AddProduct", "Home")'">Add Product</button>
+        }
+
+    </div>
+
+    <div class="container">
+        <div class="row">
+            @model IEnumerable<Item>
+            @foreach (Item item in Model)
+            {
+                <div class="col-lg-4">
+                    <a style="text-decoration:none;" asp-action="ProductDetail">
+                        <div>
+                            @if (item.ImagePath == null)
+                            {
+                                <img src="@Url.Content("~")/images/item1.png" height="250" width="250" />
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("~")/images/@item.ImagePath" height="250" width="250" />
+                            }
+                            <h5>@item.ItemName</h5>
+                            <p class="price">@item.Price.ToString("C")</p>
+                        </div>
+                    </a>
+                    <div class="row">
+                        <p><button id="bbutton">Add to Cart</button></p>
+                        @if (this.User.Identity.IsAuthenticated)
+                        {
+                            <p><a class="btn btn-sm btn-warning" style="margin-top: 20px; margin-left: 5px" asp-action="EditProduct" asp-controller="Home" asp-route-itemId="@item.ItemID">Edit</a></p>
+                            <p><a class="btn btn-danger btn-sm" style="margin-top: 20px; margin-left:5px" asp-action="DeleteProduct" asp-controller="Home" asp-route-itemId="@item.ItemID">Delete</a></p>
+                        }
+                    </div>
+                </div>
+                <br />
+            }
+        </div>
+    </div>
+</body>
+</html>
