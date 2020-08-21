@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using RoboWorld.Models;
-using System;
 using System.Linq;
 
 namespace RoboWorld.Controllers
@@ -48,11 +46,6 @@ namespace RoboWorld.Controllers
             EFItemsRepository repo = new EFItemsRepository(context);
             repo.DeleteItem(itemId);
             return View("Home", repo.Items);
-        }
-
-        public ViewResult ProductDetail()
-        {
-            return View();
         }
 
         public ViewResult AddProduct()
@@ -108,6 +101,12 @@ namespace RoboWorld.Controllers
         {
             EFItemsRepository repo = new EFItemsRepository(context);
             return View("Home", repo.Items.Where(x => x.Category == categoryName).OrderBy(x => x));
+        }
+
+        public ViewResult ProductDetail(int itemId)
+        {
+            EFItemsRepository repo = new EFItemsRepository(context);
+            return View("ProductDetail", repo.Items.FirstOrDefault(p => p.ItemID == itemId));
         }
     }
 }

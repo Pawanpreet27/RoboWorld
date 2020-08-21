@@ -1,4 +1,4 @@
-﻿
+﻿@model Item;
 <html>
 <head>
     <meta charset="UTF-8">
@@ -16,10 +16,10 @@
           
                 <div class="col col_style card">
                     <div>
-                        <img id="portfolio-pic" src="~/images/img2.jpeg" />
-                        <h5>Robotic Toy</h5>
-                        <p class="price">$19.99</p>
-                        <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
+                        <img id="portfolio-pic" src="@Url.Content("~")/images/@Model.ImagePath" />
+                        <h5>@Model.ItemName</h5>
+                        <p class="price">@Model.Price</p>
+                        <p>@Model.Description</p>
                     </div>
                     <p><button id="bbutton">Add to Cart</button></p>
                 </div>

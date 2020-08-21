@@ -1,6 +1,4 @@
-﻿
-
-<html>
+﻿<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,7 +28,7 @@
             @foreach (Item item in Model)
             {
                 <div class="col-lg-4">
-                    <a style="text-decoration:none;" asp-action="ProductDetail">
+                    <a style="text-decoration:none;" asp-action="ProductDetail" asp-controller="Home" asp-route-itemId="@item.ItemID">
                         <div>
                             @if (item.ImagePath == null)
                             {
