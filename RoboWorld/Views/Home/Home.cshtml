@@ -32,11 +32,11 @@
                         <div>
                             @if (item.ImagePath == null)
                             {
-                                <img src="@Url.Content("~")/images/item1.png" height="250" width="250" />
+                                <img id="portfolio-pic" src="@Url.Content("~")/images/item1.png" height="250" width="250" />
                             }
                             else
                             {
-                                <img src="@Url.Content("~")/images/@item.ImagePath" height="250" width="250" />
+                                <img  id="portfolio-pic" src="@Url.Content("~")/images/@item.ImagePath" height="250" width="250" />
                             }
                             <h5>@item.ItemName</h5>
                             <p class="price">@item.Price.ToString("C")</p>
