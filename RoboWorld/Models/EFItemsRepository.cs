@@ -15,7 +15,7 @@ namespace RoboWorld.Models
 
         public IQueryable<Item> Items => context.Items;
 
-        IQueryable<Item> IItemsRepository.Items => context.Items;
+        public IQueryable<CartItem> CartItems => context.CartItems;
 
         public void SaveItem(Item item)
         {
@@ -39,13 +39,42 @@ namespace RoboWorld.Models
             context.SaveChanges();
         }
 
+        
+
+        public void SaveCartItem(Item item)
+        {
+            
+                Console.WriteLine("else executed");
+
+                CartItem dbEntry = new CartItem();
+               
+                    dbEntry.CartItemName = item.ItemName;
+                    dbEntry.Price = item.Price;
+                    dbEntry.ImagePath = item.ImagePath;
+            context.CartItems.Add(dbEntry);
+
+            context.SaveChanges();
+        }
+
         public Item DeleteItem(int itemID)
         {
             Item dbEntry = context.Items.FirstOrDefault(i => i.ItemID == itemID);
-
+            
             if (dbEntry != null)
             {
                 context.Items.Remove(dbEntry);
+                context.SaveChanges();
+            }
+            return dbEntry;
+        }
+
+        public CartItem DeleteCartItem(int itemID)
+        {
+            CartItem dbEntry = context.CartItems.FirstOrDefault(i => i.CartItemID == itemID);
+
+            if (dbEntry != null)
+            {
+                context.CartItems.Remove(dbEntry);
                 context.SaveChanges();
             }
             return dbEntry;

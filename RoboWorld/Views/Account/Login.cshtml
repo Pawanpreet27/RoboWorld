@@ -20,14 +20,15 @@
                 <div style="color:red;" asp-validation-summary="All"></div>
                 <div class="row" id="row-flex">
                     <div class="col">
-                       
+
                         <label id="labelStyle" asp-for="EmailID">Email-ID</label>
                         <input type="text" id="email" asp-for="EmailID" placeholder="Your Email-ID..">
 
                         <label id="labelStyle" asp-for="Password">Password</label>
-                        <input type="text" id="mobileNo" asp-for="Password" placeholder="Your Password..">
+                        <div><span asp-validation-for="Password" class="text-danger"></span></div>
+                        <input  asp-for="Password" placeholder="Your Password.." style=" width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-top: 0px; margin-bottom: 12px; resize: vertical;">
 
-                    
+
                         <p> <button id="bbutton" type="submit"> SUBMIT </button></p>
                     </div>
                 </div>

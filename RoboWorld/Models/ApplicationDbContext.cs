@@ -14,7 +14,7 @@ namespace RoboWorld.Models
             : base(options) { }
         public DbSet<Item> Items { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<Orders> Orders { get; set; }
+        public DbSet<CartItem> CartItems { get; set; }
 
 
     }

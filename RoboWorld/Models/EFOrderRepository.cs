@@ -5,23 +5,39 @@ using System.Threading.Tasks;
 
 namespace RoboWorld.Models
 {
-    public class EFOrderRepository : IOrderRepository
+    public class EFOrderRepository 
     {
         private ApplicationDbContext context;
         public EFOrderRepository(ApplicationDbContext ctx)
         {
             context = ctx;
         }
-        public IQueryable<Orders> Orders => context.Orders;
 
-        public void SaveOrder(Orders order)
+        public IQueryable<CartItem> CartItems => context.CartItems;
+
+
+        public IQueryable<Item> Items => context.Items;
+
+        public void SaveItem(CartItem item)
         {
-            context.Orders.AddRange(order);
-                if (order.OrderID == 0)
-                {
-                    context.Orders.Add(order);
-                }
-                context.SaveChanges();
+            context.CartItems.Add(item);
+
+   
+
+            context.SaveChanges();
         }
+
+        public CartItem DeleteItem(int itemID)
+        {
+            CartItem dbEntry = context.CartItems.FirstOrDefault(i => i.CartItemID == itemID);
+
+            if (dbEntry != null)
+            {
+                context.CartItems.Remove(dbEntry);
+                context.SaveChanges();
+            }
+            return dbEntry;
+        }
+
     }
 }

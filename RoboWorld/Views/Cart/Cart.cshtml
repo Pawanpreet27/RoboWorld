@@ -1,4 +1,4 @@
-﻿@model RoboWorld.Models.LoginModel;
+﻿@model IEnumerable<CartItem>;
 <html>
 <head>
     <meta charset="UTF-8">
@@ -11,7 +11,6 @@
 
 <body>
     <form asp-action="Cart" method="post">
-
         <div class="container">
             <div class="col">
                 <h1 style="font-weight: bold;">My Cart</h1>
@@ -21,9 +20,33 @@
                     <div class="row">
                         <div class="col-6">
                             <h5 id="labelStyle">Items in cart</h5>
-                         
+                            <div>
+                                @foreach (CartItem item in Model)
+                                {
+                                 <div class="col-lg-4">
+                                   <a style="text-decoration:none;" asp-action="ProductDetail" asp-controller="Home" asp-route-itemId="@item.CartItemID">
+                                       <div>
+                                           @if (item.ImagePath == null)
+                                           {
+                                       <img id="portfolio-pic" src="@Url.Content("~")/images/item1.png" height="250" width="250" /> }
+                                                       else
+                                                       {
+                                       <img id="portfolio-pic" src="@Url.Content("~")/images/@item.ImagePath" height="250" width="250" />}
+                                           <h5>@item.CartItemName</h5>
+                                           <p class="price">@item.Price.ToString("C")</p>
+                                           <p><a class="btn btn-danger btn-sm" style="margin-top: 20px; margin-left:5px" asp-action="DeleteProduct" asp-controller="Cart" asp-route-itemId="@item.CartItemID">Delete</a></p>
+                                       </div>
+                                  </a>
+                                 </div>
+                                    <br />
+                                }
                         </div>
+
+                    </div>
                         <div class="col-6">
+                            <h2 style="font-weight: bold;"> Order Total</h2>
+                            <h3 style="font-weight: bold;">@Model.Sum((item) => item.Price).ToString("C")</h3>
+                            </br> </br>
                             <h5 id="labelStyle">Billing Address</h5>
                             <label id="labelStyle" for="fname"><i class="fa fa-user"></i> Full Name</label>
                             <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
@@ -39,12 +62,12 @@
                             <label id="labelStyle">
                                 <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
                             </label>
-                            <p> <button id="bbutton" type="submit"> CHECKOUT </button></p>
-                        </div>
+                            <p> <button id="bbutton" asp-controller="Cart" asp-action="Checkout" type="submit"> CHECKOUT </button></p>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
     </form>
 

@@ -10,7 +10,7 @@ using RoboWorld.Models;
 namespace RoboWorld.Migrations.AppIdentityDb
 {
     [DbContext(typeof(AppIdentityDbContext))]
-    [Migration("20200819231919_Initial")]
+    [Migration("20200822034623_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -7,7 +7,7 @@ namespace RoboWorld.Models
 {
     public interface IOrderRepository
     {
-        IQueryable<Orders> Orders { get; }
-        void SaveOrder(Orders order);
+        IQueryable<Item> CartItems{ get; }
+        void SaveOrder(Item cartItem);
     }
 }

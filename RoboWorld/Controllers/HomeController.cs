@@ -68,7 +68,7 @@ namespace RoboWorld.Controllers
             else
             {
                 // There is something wrong with the data values
-                return View(product);
+                return View("Add",product);
             }
         }
 

@@ -16,6 +16,7 @@ namespace RoboWorld.Models
         public string EmailID { get; set; }
 
         [Required(ErrorMessage = "Please enter your Password")]
+        [UIHint("password")]
         public string Password { get; set; }
 
         public string ReturnUrl { get; set; } = "/";

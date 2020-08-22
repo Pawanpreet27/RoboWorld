@@ -28,8 +28,6 @@ namespace RoboWorld
                 options => options.UseSqlServer(Configuration["Data:RoboWorldIdentity:ConnectionString"]));
 
             services.AddTransient<IItemsRepository, EFItemsRepository>();
-            services.AddTransient<IOrderRepository, EFOrderRepository>();
-            services.AddTransient<IUserRepository, EFUserRepository>();
 
             services.AddIdentity<IdentityUser, IdentityRole>()
                .AddEntityFrameworkStores<AppIdentityDbContext>()

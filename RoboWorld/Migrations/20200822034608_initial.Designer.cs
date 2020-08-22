@@ -10,7 +10,7 @@ using RoboWorld.Models;
 namespace RoboWorld.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200819231853_initial")]
+    [Migration("20200822034608_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,28 +21,25 @@ namespace RoboWorld.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("RoboWorld.Models.Cart", b =>
+            modelBuilder.Entity("RoboWorld.Models.CartItem", b =>
                 {
-                    b.Property<int>("CartLineID")
+                    b.Property<int>("CartItemID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ItemID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ItemName")
+                    b.Property<string>("CartItemName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Quantity")
-                        .HasColumnType("int");
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
 
-                    b.HasKey("CartLineID");
+                    b.HasKey("CartItemID");
 
-                    b.ToTable("Cart");
+                    b.ToTable("CartItems");
                 });
 
             modelBuilder.Entity("RoboWorld.Models.Item", b =>
@@ -53,15 +50,18 @@ namespace RoboWorld.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Category")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ItemName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Price")
@@ -70,35 +70,6 @@ namespace RoboWorld.Migrations
                     b.HasKey("ItemID");
 
                     b.ToTable("Items");
-                });
-
-            modelBuilder.Entity("RoboWorld.Models.Orders", b =>
-                {
-                    b.Property<int>("OrderID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("CartLineID")
-                        .HasColumnType("int");
-
-                    b.Property<bool?>("IsDelivered")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("OrderDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ShippingAddress")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
-
-                    b.HasKey("OrderID");
-
-                    b.HasIndex("CartLineID");
-
-                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("RoboWorld.Models.User", b =>
@@ -130,13 +101,6 @@ namespace RoboWorld.Migrations
                     b.HasKey("UserID");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("RoboWorld.Models.Orders", b =>
-                {
-                    b.HasOne("RoboWorld.Models.Cart", "Cart")
-                        .WithMany()
-                        .HasForeignKey("CartLineID");
                 });
 #pragma warning restore 612, 618
         }

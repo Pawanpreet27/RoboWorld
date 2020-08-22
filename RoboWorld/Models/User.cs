@@ -12,6 +12,7 @@ namespace RoboWorld.Models
 
         [Required(ErrorMessage = "Please enter your password!")]
         [RegularExpression("^.{4,8}$", ErrorMessage = "Please enter a valid password, must be 4-8 length long")]
+        [UIHint("password")]
         public string Password { get; set; }
 
         [Required(ErrorMessage = "Please enter your email address!")]

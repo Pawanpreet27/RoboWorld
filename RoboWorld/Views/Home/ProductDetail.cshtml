@@ -11,7 +11,6 @@
 
 <body>
     <div class="container">
-
         <div class="row">
           
                 <div class="col col_style card">
@@ -21,7 +20,7 @@
                         <p class="price">@Model.Price</p>
                         <p>@Model.Description</p>
                     </div>
-                    <p><button id="bbutton" style="width: 200px">Add to Cart</button></p>
+                    <p><button id="bbutton" style="width: 200px"  asp-controller="Cart" asp-action="AddProduct" onclick="location.href='@Url.Action("AddProduct", "Cart", FormMethod.Post)?itemId='+@Model.ItemID">Add to Cart</button></p>
                 </div>
          
         </div>

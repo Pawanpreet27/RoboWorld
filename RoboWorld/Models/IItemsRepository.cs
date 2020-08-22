@@ -7,6 +7,8 @@ namespace RoboWorld.Models
 {
    public interface IItemsRepository
     {
+        IQueryable<CartItem> CartItems { get; }
+
         IQueryable<Item> Items { get; }
 
         Item DeleteItem(int itemId);

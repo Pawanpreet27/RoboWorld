@@ -24,6 +24,11 @@
 
     <div class="container">
         <div class="row">
+            <script>
+            function ShowMessage() {
+                alert("Item added to cart");
+            }
+        </script>
             @model IEnumerable<Item>
             @foreach (Item item in Model)
             {
@@ -36,14 +41,15 @@
                             }
                             else
                             {
-                                <img  id="portfolio-pic" src="@Url.Content("~")/images/@item.ImagePath" height="250" width="250" />
+                                <img id="portfolio-pic" src="@Url.Content("~")/images/@item.ImagePath" height="250" width="250" />
                             }
                             <h5>@item.ItemName</h5>
                             <p class="price">@item.Price.ToString("C")</p>
+                           
                         </div>
                     </a>
                     <div class="row">
-                        <p><button id="bbutton">Add to Cart</button></p>
+                        <p><button id="bbutton" asp-controller="Cart" asp-action="AddProduct" onclick="location.href='@Url.Action("AddProduct", "Cart", FormMethod.Post)?itemId='+@item.ItemID; javascript:return ShowMessage();" >Add to Cart</button></p>
                         @if (this.User.Identity.IsAuthenticated)
                         {
                             <p><a class="btn btn-sm btn-warning" style="margin-top: 20px; margin-left: 5px" asp-action="EditProduct" asp-controller="Home" asp-route-itemId="@item.ItemID">Edit</a></p>
